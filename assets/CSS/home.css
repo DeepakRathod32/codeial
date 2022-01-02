@@ -1,0 +1,58 @@
+#heading{
+    color: grey;
+    margin-left: 40%;
+    margin-bottom: -7px;
+    margin-top: 17px;
+}
+h6{
+    margin-top: -3px;
+    margin-left: 17px;
+    color: grey;
+}
+select{
+    width: 90%;
+    height: 20px;
+    border-style: none;
+    margin-left: 17px;
+    margin-top: -21px;
+}
+select:focus{
+    outline: none;
+}
+input{
+    height: 30px;
+    width: 100%;
+    margin-left: 16px;
+    margin-top: -26px;
+    margin-bottom: -2px;
+    border-style: none;
+    
+}
+input:focus{
+    outline: none;
+}
+span{
+    display: inline-block;
+}
+#category, #date{
+    width: 48%;
+}
+button{
+    height: 55px;
+    width: 140px;
+    color: white;
+    font-size: 0.9rem;
+    border-style: none;
+}
+#add{
+    background-color: #404444;
+    margin-left: 235px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#delete{
+    background-color: #d53c3c;
+}
+i{
+    margin-right: 8px;
+}

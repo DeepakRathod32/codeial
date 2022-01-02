@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>
+            <!-- <%= title%> -->
+            To Do App
+        </title>
+        <script src="https://kit.fontawesome.com/67eee038d2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/home.css" type="text/css">
+    </head>
+    <body>
+        <!-- <h1>Codeial / <%= title%></h1> -->
+        <div id="container">
+            <h1 id="heading">TODO App</h1>
+            <hr>
+            <h6>DESCRIPTION</h6>
+            <input type="text" placeholder="What do you need to do?">
+            <hr>
+            <span id="category">
+                <h6>CATEGORY</h6>
+                <select name="" id="">
+                    <option value="">Work</option>
+                    <option value="">School</option>
+                    <option value="">cleanig</option>
+                    <option value="">personal</option>
+                    <option value="">other</option>
+                </select>
+            </span>
+            
+            <span id="date">
+                <h6>DUE DATE</h6>
+                <input type="date" placeholder="dd/mm/yyyy">
+            </span>
+            <hr>
+            <button id="add"><i class="fas fa-plus"></i> ADD TASK</button>
+            <button id="delete"><i class="fas fa-trash-alt"></i> DELETE TASK</button>
+            <hr>
+        </div>
+    </body>
+</html>
