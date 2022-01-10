@@ -1,0 +1,16 @@
+.container{
+    height: 130px;
+    width: 400px;
+    background-color: mediumaquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10%;
+    border-radius: 8px 8px 8px 8px;
+}
+input{
+    margin-top: 5px;
+}
+button{
+    margin-top: 10px;
+}
