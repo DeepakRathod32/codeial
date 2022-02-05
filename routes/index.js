@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 
 const router = express.Router();
@@ -11,6 +12,7 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));
 
 router.use('/posts', require('./posts'));
+// router.post('/posts/comment', (req, res) => { res.end('boom')});
 
 //for any further routes, access from here
 //router.use('routerName', require('./routerfile'));
