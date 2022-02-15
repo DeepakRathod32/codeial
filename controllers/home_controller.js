@@ -1,32 +1,35 @@
+// const { populate } = require("../models/post");
 const Post = require("../models/post");
+const User = require('../models/user');
 
-module.exports.home = function(req, res){
-    console.log(req.cookies);
-    res.cookie('user_id', 90);
+module.exports.home = async function(req, res){
+    
+    try{
 
-    // Post.find({}, (err, post) =>{
-    //     if(err){ console.log('errored while finding post.'); 
-    //         return;
-    //     }
-    //     return res.render('home', {
-    //         title : 'Codeial | Home',
-    //         posts : post
-    //     });
-    // });
-
-    //populate the user of each post
-    Post.find({}).populate('user').exec(function(err, posts){
-        if(err){ console.log('errored while finding post.'); 
-            return;
-        }
-        console.log(posts);
+        //populate the user of each post
+        let posts = await Post.find({})
+        .sort('-createdAt')
+        .populate("user")
+        .populate({
+            path : "Comments",
+            populate:{
+              path:"user" 
+            }
+        });
+    
+        
+        let users = await User.find({});
+    
         return res.render('home', {
             title : 'Codeial | Home',
-            posts : posts
+            posts : posts,
+            all_users : users
         });
-    });
+
+    }catch(err){
+        console.log('Error', err);
+        return;
+    }
 }
-
-
 
 // module.exports.actionName = function(req, res){}
