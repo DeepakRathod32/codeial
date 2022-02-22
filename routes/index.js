@@ -14,6 +14,8 @@ router.use('/users', require('./users'));
 router.use('/posts', require('./posts'));
 
 router.use('/comments', require('./comment'));
+
+router.use('/api', require('./api'));
 // router.post('/posts/comment', (req, res) => { res.end('boom')});
 
 //for any further routes, access from here

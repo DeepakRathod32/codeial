@@ -1,52 +1,30 @@
-<h1>Codeial / <%= title %></h1>
+<h1><%= title %></h1>
 
 <section id="feed-posts">
         <h4>Posts</h4>
         <%if(locals.user){ %>
                 <form action="/posts/create" id="new-post-form" method="POST">
-                        <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
-                        <input type="submit" value="Post">
+                        <textarea name="content" cols="30" rows="3" id="input-space" placeholder="Type here..." required></textarea>
+                        <input type="submit" value="Post" id="btn1">
                 </form> 
         <% }%>
         
-
         <div id="posts-list-container">
                 <ul>   
                         <% for(post of posts){ %>
-                                <li id="post-<%= post._id %>">
-                                        <p>
-                                                <%if( locals.user ){%> 
-                                                <small>
-                                                        <a class="delete-post-button" href="/posts/destroy/<%= post.id%>">delete</a>
-                                                </small>
-                                                <%} %>
-                                                <li> <%= post.content%> 
-                                                        <br>
-                                                        <%= post.user%> 
-                                                        <div class="post-comments">
-                                                                <%if(locals.user){ %>
-                                                                        <form action="/comments/create" method="post">
-                                                                                <input type="text" name="content" placeholder="Type here to add comment... " required>
-                                                                                <input type="hidden" name="post" value="<%= post._id %>">
-                                                                                <input type="submit" value="sub_comment">
-                                                                        </form>
-                                                                <% }%> 
-                                                        </div>
-                                             </li>
-                                        </p>
-                                </li>
+                                <%- include('_post'); %>
                         <% }%>
                 </ul>
         </div>
 </section>
 
-<section id="user-friends">
+<aside id="user-friends">
         <h4>Friends</h4>
         <%for(let u of all_users){%>  
                 <p>
                         <a href="/users/profile/<%= u.id %>"> <%= u.name %></a>
                 </p>
         <%}%>
-</section>
+        </aside>
 
 <script src="/JS/home_post.js"></script>

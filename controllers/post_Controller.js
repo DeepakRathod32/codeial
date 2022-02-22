@@ -12,6 +12,7 @@ module.exports.create = async function(req, res){
                 user: req.user._id,
             });
 
+            
             if(req.xhr){
                 return res.status(200).json({
                     data: {
@@ -36,13 +37,14 @@ module.exports.destroy = async function(req, res){
         try{
             
             let post = await Post.findById(req.params.id);
-            // console.log(post);
+            // console.log(post.user === req.user.id, 'koko');
     
             if(post.user == req.user.id){
                 post.remove();
             
                 await Comment.deleteMany({post: req.params.id});
-
+                console.log(req.xhr);
+                
                 if(req.xhr){
                     return res.status(200).json({
                         data: {

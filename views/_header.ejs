@@ -1,19 +1,18 @@
 <header>
-    Paga Header
 
-    <ul>
+    <ul id="head-home">
         <% if(locals.user) {%>
-            <li> 
-                <a href="/users/profile"><%= user.name%></a>
+            <li class="link"> 
+                <a href="/users/profile" id="head"><%= user.name%></a>
             </li>
-            <li>
+            <li class="link">
                 <a href="/users/sign-out">Sign Out</a>
             </li>            
         <% }else{ %>
-            <li>
+            <li class="link">
                 <a href="/users/signin">Sign In</a>
             </li>
-            <li>
+            <li class="link">
                 <a href="/users/signup">Sign Up</a>
             </li>
         <% } %>    

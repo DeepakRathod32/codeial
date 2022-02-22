@@ -2,7 +2,7 @@
     // method to submit the form data for new post using AJAX
     let createPost = function(){
         let newPostform = $('#new-post-form');
-
+        
         newPostform.submit(function(e){
             e.preventDefault();
 
@@ -11,13 +11,14 @@
                 url: '/posts/create',
                 data: newPostform.serialize(),
                 success: function(data){
-                    console.log(data.data.post);
                     let newPost = newPostDom(data.data.post);
-                    $('post-list-container>ul').append(newPost);
-                    deletePost($(' .delete-post-button', newPost));
+                    console.log('new post', newPost);
+                    $('#posts-list-container>ul').prepend(newPost);
+                    deletePost('.delete-post-button', newPost);
                 }, error: function(eror){
                     console.log(error.responseText);
-                }
+                },
+                Cache: false,
             });
         });
     }
@@ -27,11 +28,14 @@
         <li id="post-${post._id}">
                 <p>
                         <small>
-                                <a class="delete-post-button" href="/posts/destroy/${ post.id}">delete</a>
+                                <a class="delete-post-button" href="/posts/destroy/${ post._id}">delete</a>
                         </small>
-                        <li> ${ post.content}
+                        <br>
+                         ${ post.content}
                                 <br>
-                                ${ post.user} 
+                                ${ post.user.name}
+                                <br>
+                                ${ post.user.email} 
                                 <div class="post-comments">
                                         
                                                 <form action="/comments/create" method="post">
@@ -41,7 +45,7 @@
                                                 </form>
                                         
                                 </div>
-                    </li>
+                   
                 </p>
         </li>
         `);
@@ -49,14 +53,14 @@
 
     //method to delete a post from DOM
     let deletePost = function(deleteLink){
-
-        $('deleteLink').click(function(e){
+        $(deleteLink).click(function(e){
             e.preventDefault();
 
             $.ajax({
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function(data){
+                    console.log(data);
                     $(`#post-${data.data.post_id}`).remove();
                 },error: function(error){
                     console.log(error.responseText);
