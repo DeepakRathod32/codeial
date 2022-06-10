@@ -70,9 +70,9 @@ module.exports.signin = function(req, res){
 }
 
 module.exports.signup = function(req, res){
-    if(req.isAuthenticated){
-        return res.redirect('/users/profile')
-    }
+    // if(req.isAuthenticated){
+    //     return res.redirect('/users/profile')
+    // }
 
     return res.render('signup',{
         title : 'Signup Page'
